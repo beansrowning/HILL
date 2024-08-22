@@ -1,0 +1,12 @@
+fairseq == 0.10.2
+torch>=2.2.0
+torch-sparse>=0.6.18
+torch_geometric>=2.5.3
+torch_scatter>=2.1.2
+tqdm>=4.66.2
+thop>=0.1.1
+numpy<=1.26.4
+numba>=0.59.0
+pandas>=2.2.0
+transformers>=4.38.1
+scikit-learn>=1.4.1
