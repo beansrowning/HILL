@@ -15,9 +15,9 @@ from transformers import BertModel
 from torch_geometric.utils import to_dense_adj
 from torch_geometric.loader import DataLoader
 
-from model.graph import GraphEncoder
-from model.hill import HRLEncoder, GTData, GNNEncoder
-from model.coding_tree import get_tree_data
+from .graph import GraphEncoder
+from .hill import HRLEncoder, GTData, GNNEncoder
+from .coding_tree import get_tree_data
 
 
 class BertPoolingLayer(nn.Module):

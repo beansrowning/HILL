@@ -1,18 +1,13 @@
 import time
 
 from transformers import AutoTokenizer
-'''
-Suggested version==0.10.2  
-When using Windows, please make sure you have installed MSVC Redistributable and SDK before installing fairseq from source.
-'''
-from fairseq.data import data_utils
 import torch
 from torch.utils.data import Dataset, DataLoader, Subset
-from model.optim import ScheduledOptim, Adam
+from .model.optim import ScheduledOptim, Adam
 import os
-from eval import evaluate
-from model.contrast import ContrastModel, StructureContrast, GraphContrast
-
+from .eval import evaluate
+from .model.contrast import ContrastModel, StructureContrast, GraphContrast
+from thop import clever_format
 import utils
 import arg_parser
 
@@ -86,7 +81,6 @@ def params_and_time(config, train_set, test_set, num_epochs=20):
     """
     Experiments for parameters and training time (Figure 4)
     """
-    from thop import clever_format
     config.update(vars(args))
 
     model = MODELS[config.model_name].from_pretrained(bert_file, num_labels=num_class, local_config=config)
