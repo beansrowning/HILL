@@ -1,9 +1,5 @@
 from setuptools import setup, find_packages
 
-# BUG: torch-sparse is super hacky and needs a set install order.
-# see: https://github.com/rusty1s/pytorch_sparse/issues/156
-import torch
-
 with open("requirements.txt", encoding="utf-8") as f:
     requirements = f.read().splitlines()
 
