@@ -2,20 +2,18 @@
 
 Official implementation for NAACL 2024 paper "HILL: Hierarchy-aware Information Lossless Contrastive Learning for Hierarchical Text Classification". [[arXiv](https://arxiv.org/abs/2403.17307)]
 
-## Requirements
+## Installation Guide
 
-Theoretically, our code is compatible with a wide range of Python environments. The experimental results reported in the paper were measured in the following environment:
+Due to some complexities with how torch-sparse and torch-scatter are packaged, PyTorch must be installed *first*, followed by torch-scatter and torch-sparse, then the remainder of the package.
 
-- Python == 3.7.13
-- numpy == 1.21.5
-- PyTorch == 1.11.0
-- scikit-learn == 1.0.2
-- transformers == 4.28.1
-- numba == 0.56.2
-- **fairseq == 0.10.2**
-- **torch_geometric==2.0.4**
+Don't shoot the messenger.
 
-> [Warning] Bolded packages should be configured with the required version or the code will probably not work!!!
+```sh
+pip install torch # use install steps here to determine CPU/GPU/CUDA requirements: https://pytorch.org/get-started/locally/
+pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-2.4.0+${CUDA}.html
+# where ${CUDA} should be replaced by either cpu, cu118, cu121, or cu124 depending on your PyTorch installation.
+pip install git+https://github.com/beansrowning/HILL.git
+```
 
 ## Data preparation
 
