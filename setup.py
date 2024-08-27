@@ -1,10 +1,5 @@
 from setuptools import setup, find_packages
 
-try:
-    import pip_system_certs.wrapt_requests
-except:
-    pass
-
 # BUG: torch-sparse is super hacky and needs a set install order.
 # see: https://github.com/rusty1s/pytorch_sparse/issues/156
 try:

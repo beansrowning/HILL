@@ -9,8 +9,8 @@ from torch_geometric.nn.inits import reset
 from torch_geometric.data import Data
 from torch_geometric.typing import OptTensor
 from torch_geometric.nn.conv import MessagePassing
-from torch_geometric.typing import Adj, Size, PairTensor
-from torch_sparse import SparseTensor, matmul
+from torch_geometric.typing import Adj, Size, PairTensor, SparseTensor
+from torch_sparse import matmul
 from torch_geometric.nn import GCNConv, GATConv, GINConv
 from torch_geometric.nn import global_mean_pool, global_add_pool, global_max_pool
 
@@ -111,7 +111,7 @@ class HRLConv(MessagePassing):
     def message_and_aggregate(self, adj_t: SparseTensor,
                               x: Tensor) -> Tensor:
         adj_t = adj_t.set_value(None, layout=None)
-        return matmul(adj_t, x, reduce=self.aggr)
+        return adj_t.matmul(x, reduce=self.aggr)
 
     def __repr__(self):
         return '{}(nn={})'.format(self.__class__.__name__, self.nn)
